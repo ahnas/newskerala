@@ -1,0 +1,62 @@
+{% load static %}
+<!-- Footer Start -->
+<footer id="footer" class="footer">
+    <div class="utf_footer_main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-12 col-xs-12 footer-widget contact-widget">
+                    <h3 class="widget-title">About Us</h3>
+                    <ul>
+                        <li>{{about.summary}}</li>
+                        <li><i class="fa fa-home"></i>{{about.address}}</li>
+                        <li><i class="fa fa-phone"></i> <a href="javascript:void(0)">{{about.phone}}</a></li>
+                        <li><i class="fa fa-envelope-o"></i> <a href="javascript:void(0)">{{about.email}}</a></li>
+                    </ul>
+                    <ul class="unstyled utf_footer_social">
+                        {% for i in socials %}
+                        <li><a title="{{i.media}}" href="{{i.link}}" target="_blank"><i class="fa fa-{{i.media}}"></i></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-sm-12 col-xs-12 footer-widget widget-categories">
+                    <h3 class="widget-title">Popular Categories</h3>
+                    <ul>
+                        {% for i in categories|slice:"5" %}
+                        <li>
+                            <i class="fa fa-angle-double-right"></i><a href="{% url 'web:category' slug=i.slug %}"><span class="catTitle">{{i.title}}</span><span class="catCounter"> ({{i.news_count}})</span></a>
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-sm-12 col-xs-12 footer-widget">
+                    <h3 class="widget-title">Popular Post</h3>
+                    <div class="utf_list_post_block">
+                        <ul class="utf_list_post">
+                            {% for i in popular_news %}
+                            <li class="clearfix">
+                                <div class="utf_post_block_style post-float clearfix">
+                                    <div class="utf_post_thumb">
+                                        {% if i.featured_image %}
+                                        <a href="{% url 'web:post' slug=i.slug %}"> <img class="img-fluid lazy" src="{% static 'images/loading.webp' %}" data-src="{{i.featured_image.crop.100x75}}" alt="" /> </a>
+                                        {% endif %}
+                                    </div>
+                                    <div class="utf_post_content">
+                                        <h2 class="utf_post_title title-small"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                        <div class="utf_post_meta">
+                                            <span class="utf_post_date">{{i.display_time}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer End -->

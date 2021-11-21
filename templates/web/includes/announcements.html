@@ -1,0 +1,18 @@
+{% load static %}
+
+<div class="widget color-default">
+    <h3 class="utf_block_title"><span>Announcements</span></h3>
+    <div class="utf_list_post_block">
+        <ul class="utf_list_post review-post-list">
+            {% for i in announcements %}
+            <li class="card p-3">
+                <div class="utf_post_block_style">
+                    <div class="utf_post_content">
+                        <h2 class="utf_post_title m-0"><a href="{% url 'web:announcements' %}">{{i.title}}</a></h2>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

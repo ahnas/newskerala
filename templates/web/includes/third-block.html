@@ -1,0 +1,47 @@
+{% load static %}
+<!--/ 3rd Block Wrapper Start -->
+<section class="utf_block_wrapper p-bottom-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="utf_more_news block color-default">
+                    <h3 class="utf_block_title"><span>View More News</span></h3>
+                    <div id="utf_more_news_slide" class="utf_more_news_slide">
+                        <div class="item">
+                            {% for i in more_news %}
+                            <div class="utf_post_block_style utf_post_float_half clearfix">
+                                <div class="utf_post_thumb">
+                                    {% if i.featured_image %}
+                                    <a href="{% url 'web:post' slug=i.slug %}"> <img class="img-fluid lazy" loading="lazy" src="{% static 'images/loading.webp' %}" data-src="{{i.featured_image.crop.300x200}}" alt="" /> </a>
+                                    {% endif %}
+                                </div>
+                                <a class="utf_post_cat" href="{% url 'web:category' slug=i.category.slug %}">{{i.category}}</a>
+                                <div class="utf_post_content">
+                                    <h2 class="utf_post_title"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                    <div class="utf_post_meta">
+                                        <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="javascript:void(0)">{{i.location}}</a></span>
+                                        <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{i.display_time}}</span>
+                                    </div>
+                                    <p>{{i.summary|slice:120}} ...</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-12">
+                <div class="sidebar utf_sidebar_right">
+
+                    {% include 'web/includes/popular-news.html' %}
+
+                    {% include 'web/includes/subscription.html' %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ 3rd Block Wrapper End -->

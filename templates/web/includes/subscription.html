@@ -1,0 +1,21 @@
+<div class="widget m-bottom-0">
+    <h3 class="utf_block_title"><span>Newsletter</span></h3>
+    <div class="utf_newsletter_block">
+        <div class="utf_newsletter_introtext">
+            <h4>Subscribe for Whatsapp!</h4>
+            <p>Read Today's Live News on Sports, Business, Entertainment, Blogs and Opinions around the world from News Kerala Daily.</p>
+        </div>
+        <div class="utf_newsletter_form">
+            <form action="{% url 'web:newsletter' %}" method="post" class="ajax">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{newsletter_form.name}}
+                    {{newsletter_form.place}}
+                    {{newsletter_form.number}}
+                    {{newsletter_form.district}}
+                    <button class="btn btn-primary" type="submit">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

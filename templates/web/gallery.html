@@ -1,0 +1,80 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}{{instance}} News{% endblock title %}
+{% block content %}
+
+{% include 'web/includes/breadcrumb.html' %}
+
+<section class="utf_block_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="block category-listing">
+                    <h3 class="utf_block_title"><span>Gallery</span></h3>
+
+                    <div class="row">
+                        {% for i in instances %}
+                        <div class="col-md-12">
+                            <div class="utf_post_block_style post-grid clearfix">
+                                {% if i.image %}
+                                <div class="utf_post_thumb"><img class="img-fluid" src="{{i.image.thumbnail.600x400}}" alt="{{i.title}}"></div>
+                                {% endif %}
+                                <div class="utf_post_content">
+                                    <h2 class="utf_post_title title-large">{{i.title}}</h2>
+                                    <p>{{i.summary}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="paging">
+                    {% if instances.has_other_pages %}
+                      <ul class="pagination">
+                        {% if instances.has_previous %}
+                          <li><a href="?page={{ instances.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                          <li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
+                        {% endif %}
+                        {% for i in instances.paginator.page_range %}
+                          {% if instances.number == i %}
+                            <li class="active"><a href="javascript:void(0)">{{i}}<span class="sr-only">(current)</span></a></li>
+                          {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                          {% endif %}
+                        {% endfor %}
+                        {% if instances.has_next %}
+                          <li><a href="?page={{ instances.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                          <li class="disabled"><a href="javascript:void(0)">&raquo;</a></li>
+                        {% endif %}
+                      </ul>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <div class="sidebar utf_sidebar_right">
+                    <div class="widget">
+                        <h3 class="utf_block_title"><span>Follow Us</span></h3>
+                        <ul class="social-icon">
+                            {% for i in socials %}
+                            <li>
+                                <a href="{{i.link}}" target="_blank"><i class="fa fa-{{i.media}}"></i></a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    {% include 'web/includes/popular-news.html' %}
+                    {% include 'web/includes/post_ads.html' %}
+                    {% include 'web/includes/subscription.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

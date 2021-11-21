@@ -1,0 +1,218 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block title %}Heading{% endblock title %}
+{% block content %}
+
+{% include 'web/includes/breadcrumb.html' %}
+
+<section class="utf_block_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="single-post">
+                    <div class="utf_post_title-area">
+                        <a class="utf_post_cat" href="#">Food</a>
+                        <h2 class="utf_post_title">Lorem Ipsum is simply dummy text of the printing and type setting industry simply dummy text type.</h2>
+                        <div class="utf_post_meta">
+                            <span class="utf_post_author"> By <a href="#">John Wick</a> </span> <span class="utf_post_date"><i class="fa fa-clock-o"></i> 15 Jan, 2020</span>
+                            <span class="post-hits"><i class="fa fa-eye"></i> 21</span>
+                            <span class="post-comment">
+                                <i class="fa fa-comments-o"></i> <a href="#" class="comments-link"><span>01</span></a>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="utf_post_content-area">
+                        <div class="entry-content">
+                            <div class="post-media post-video">
+                                <div class="embed-responsive">
+                                    <iframe src="https://www.youtube.com/embed/jssO8-5qmag" allowfullscreen="" width="500" height="281"></iframe>
+                                </div>
+                            </div>
+                            <p>
+                                <span class="dropcap">L</span> orem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard Lorem Ipsum is simply dummy text of the
+                                printing and type setting industry. Lorem Ipsum has been the industry's standard.
+                            </p>
+                            <blockquote>
+                                Lorem Ipsum is simply dummy text of the printing and type setting industry Lorem Ipsum is simply dummy text of the printing type setting industry. Lorem Ipsum has been Lorem Ipsum has been the
+                                industry's standard.
+                            </blockquote>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since when an unknown printer took a galley of type and
+                                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                                with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </p>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since when an unknown printer took a galley of type and
+                                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                                with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </p>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since when an unknown printer took a galley of type and
+                                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            </p>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since when an unknown printer took a galley of type and
+                                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            </p>
+                        </div>
+
+                        <div class="tags-area clearfix">
+                            <div class="post-tags">
+                                <span>Tags:</span>
+                                <a href="#"># Business</a>
+                                <a href="#"># Corporate</a>
+                                <a href="#"># Services</a>
+                                <a href="#"># Customer</a>
+                            </div>
+                        </div>
+
+                        <div class="share-items clearfix">
+                            <ul class="post-social-icons unstyled">
+                                <li class="facebook">
+                                    <a href="#"> <i class="fa fa-facebook"></i> <span class="ts-social-title">Facebook</span></a>
+                                </li>
+                                <li class="twitter">
+                                    <a href="#"> <i class="fa fa-twitter"></i> <span class="ts-social-title">Twitter</span></a>
+                                </li>
+                                <li class="gplus">
+                                    <a href="#"> <i class="fa fa-google-plus"></i> <span class="ts-social-title">Google +</span></a>
+                                </li>
+                                <li class="pinterest">
+                                    <a href="#"> <i class="fa fa-pinterest"></i> <span class="ts-social-title">Pinterest</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="post-navigation clearfix">
+                    <div class="post-previous">
+                        <a href="#">
+                            <span><i class="fa fa-angle-left"></i>Previous Post</span>
+                            <h3>Zhang social media pop also known when smart innocent...</h3>
+                        </a>
+                    </div>
+                    <div class="post-next">
+                        <a href="#">
+                            <span>Next Post <i class="fa fa-angle-right"></i></span>
+                            <h3>Zhang social media pop also known when smart innocent...</h3>
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="author-box">
+                    <div class="author-img pull-left"><img src="{% static 'images/news/author.png' %}" alt="" /></div>
+                    <div class="author-info">
+                        <h3>Miss Lisa Doe</h3>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since It has survived not only five centuries, but also the leap
+                            into electronic type setting, remaining essentially unchanged.
+                        </p>
+                    </div>
+                </div>
+
+
+                <!-- Post comment start -->
+                <div id="comments" class="comments-area block">
+                    <h3 class="utf_block_title"><span>03 Comments</span></h3>
+                    <ul class="comments-list">
+                        <li>
+                            <div class="comment">
+                                <img class="comment-avatar pull-left" alt="" src="{% static 'images/news/user1.png' %}" />
+                                <div class="comment-body">
+                                    <div class="meta-data"><span class="comment-author">Miss Lisa Doe</span> <span class="comment-date pull-right">15 Jan, 2020</span></div>
+                                    <div class="comment-content">
+                                        <p>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since It has survived not only five centuries,
+                                            but also the leap into electronic type setting, remaining essentially unchanged.
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="comment last">
+                                <img class="comment-avatar pull-left" alt="" src="{% static 'images/news/user1.png' %}" />
+                                <div class="comment-body">
+                                    <div class="meta-data"><span class="comment-author">Miss Lisa Doe</span> <span class="comment-date pull-right">15 Jan, 2020</span></div>
+                                    <div class="comment-content">
+                                        <p>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since It has survived not only five centuries,
+                                            but also the leap into electronic type setting, remaining essentially unchanged.
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--/ Comments Form Start -->
+                <div class="comments-form">
+                    <h3 class="title-normal">Leave a comment</h3>
+                    <form action="" method="post" class="ajax">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input class="form-control" name="name" id="name" placeholder="Name" type="text" required="" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control required-field" id="message" placeholder="Your Comment" rows="10" required=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <button class="comments-btn btn btn-primary" type="submit">Post Comment</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comments form end -->
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <div class="sidebar utf_sidebar_right">
+                    <div class="widget">
+                        <h3 class="utf_block_title"><span>Follow Us</span></h3>
+                        <ul class="social-icon">
+                            {% for i in socials %}
+                            <li>
+                                <a href="{{i.link}}" target="_blank"><i class="fa fa-{{i.media}}"></i></a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    {% include 'web/includes/popular-news.html' %}
+
+                    {% include 'web/includes/post_ads.html' %}
+
+                    <div class="widget widget-tags">
+                        <h3 class="utf_block_title"><span>Popular Tags</span></h3>
+                        <ul class="unstyled clearfix">
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">Corporate</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Customer</a></li>
+                            <li><a href="#">Money</a></li>
+                            <li><a href="#">Health</a></li>
+                            <li><a href="#">Lifestyles</a></li>
+                            <li><a href="#">Traveling</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Wordpress</a></li>
+                            <li><a href="#">Customer</a></li>
+                        </ul>
+                    </div>
+
+                    {% include 'web/includes/subscription.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

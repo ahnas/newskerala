@@ -1,0 +1,188 @@
+{% extends 'web/base.html' %}
+{% load static %}{% load humanize %}
+{% block title %}{{instance.title}}{% endblock title %}
+
+{% block meta %}
+<meta name="title" content="{{instance.title}}">
+<meta name="description" content="{{instance.summary}}">
+<meta property="og:image" content="https://newskeraladaily.in{{instance.featured_image.crop.100x100}}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{request.build_absolute_uri}}">
+<meta property="og:title" content="{{instance.title}}">
+<meta property="og:description" content="{{instance.summary}}">
+<meta property="og:image" content="https://newskeraladaily.in{{instance.featured_image.crop.100x100}}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="{{instance.title}}">
+<meta property="twitter:url" content="{{request.build_absolute_uri}}">
+<meta property="twitter:title" content="{{instance.title}}">
+<meta property="twitter:description" content="{{instance.summary}}">
+<meta property="twitter:image" content="https://newskeraladaily.in{{instance.featured_image.crop.100x100}}">
+{% endblock meta %}
+
+{% block content %}
+
+{% include 'web/includes/breadcrumb.html' %}
+
+<section class="utf_block_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="single-post">
+                    <div class="utf_post_title-area">
+                        <h2 class="utf_post_title">{{instance.title}}</h2>
+                        <div class="utf_post_meta">
+                            <span class="utf_post_author"> By <a href="javascript:void(0)">{{instance.reporter}}</a> </span> <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{instance.display_time}}</span>
+                            <span class="post-hits"><i class="fa fa-map-marker"></i> {{instance.location}}</span>
+                            <span class="post-comment">
+                                <i class="fa fa-comments-o"></i> <a href="javascript:void(0)" class="comments-link"><span>{{comments|length}}</span></a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="utf_post_content-area">
+                        {% if instance.featured_image %}
+                        <div class="post-media post-featured-image">
+                            <img src="{{instance.featured_image.crop.850x500}}" class="img-fluid" alt="" />
+                        </div>
+                        {% endif %}
+                        <div class="entry-content">
+                            {{instance.content|safe}}
+                        </div>
+
+                        <div class="tags-area clearfix">
+                            <div class="post-tags">
+                                <span>Tags:</span>
+                                {% for i in instance.tags.all %}
+                                <a href="{% url 'web:tagged_news' tag=i %}">#{{i}}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="share-items clearfix">
+                            <ul class="post-social-icons unstyled">
+                                <li class="whatsapp">
+                                    <a target="_blank" href="https://wa.me/?text=*{{instance.title|urlencode}}*%0A%0A{{instance.summary|urlencode}}%0A{{request.build_absolute_uri}}"> <i class="fa fa-whatsapp"></i>
+                                        <span class="ts-social-title">Whatsapp</span>
+                                    </a>
+                                </li>
+                                <li class="twitter">
+                                    <a target="_blank" href="https://www.twitter.com/intent/tweet?text={{instance.title|urlencode}}%20{{request.build_absolute_uri}}"> <i class="fa fa-twitter"></i>
+                                        <span class="ts-social-title">Twitter</span>
+                                    </a>
+                                </li>
+                                <li class="facebook">
+                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}"> <i class="fa fa-facebook"></i>
+                                        <span class="ts-social-title">Facebook</span>
+                                    </a>
+                                </li>
+                                {% if user.is_authenticated %}
+                                <li class="whatsapp">
+                                    <a target="_blank" href="https://wa.me/?text=*{{instance.title|urlencode}}*%0A%0A{{instance.summary|urlencode}}%0A%0A*Read%20more*%0A{{request.build_absolute_uri}}%0A%0A{{about.whatsapp_message|urlencode}}"> <i class="fa fa-whatsapp"></i>
+                                        <span class="ts-social-title">Whatsapp</span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="post-navigation clearfix">
+                    <div class="post-previous">
+                        {% if prev_news %}
+                        <a href="{% url 'web:post' slug=prev_news.slug %}"> <span><i class="fa fa-angle-left"></i>Previous Post</span>
+                            <h3>{{prev_news.title}}</h3>
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="post-next">
+                        {% if next_news %}
+                        <a href="{% url 'web:post' slug=next_news.slug %}"> <span>Next Post <i class="fa fa-angle-right"></i></span>
+                            <h3>{{next_news.title}}</h3>
+                        </a>
+                        {% endif %}
+                    </div>
+                </nav>
+
+                <div class="author-box">
+                    <div class="author-img pull-left"><img src="{{instance.reporter.photo.url}}" alt="" /></div>
+                    <div class="author-info">
+                        <h3>{{instance.reporter.name}}</h3>
+                        <p>{{instance.reporter.about}}</p>
+                    </div>
+                </div>
+
+                <!-- Post comment start -->
+                <div id="comments" class="comments-area block">
+                    <h3 class="utf_block_title"><span>{{comments|length}} Comments</span></h3>
+                    <ul class="comments-list">
+                        {% for i in comments %}
+                        <li>
+                            <div class="comment">
+                                <img class="comment-avatar pull-left" alt="" src="{% static 'images/news/user1.png' %}" />
+                                <div class="comment-body">
+                                    <div class="meta-data"><span class="comment-author">{{i.name}}</span> <span class="comment-date pull-right">{{i.time|naturaltime}}</span></div>
+                                    <div class="comment-content">
+                                        <p>{{i.comment}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- Post comment end -->
+
+                <!--/ Comments Form Start -->
+                <div class="comments-form">
+                    <h3 class="title-normal">Leave a comment</h3>
+                    <form method="post" action="" class="ajax">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{comment_form.name}}
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{comment_form.comment}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <button class="comments-btn btn btn-primary" type="submit">Post Comment</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comments form end -->
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <div class="sidebar sidebar-left">
+
+                    {% include 'web/includes/popular-news.html' %}
+
+                    {% include 'web/includes/post_ads.html' %}
+
+                    <div class="widget widget-tags">
+                        <h3 class="utf_block_title"><span>Popular Categories</span></h3>
+                        <ul class="unstyled clearfix">
+                            {% for i in categories %}
+                            <li><a href="{% url 'web:category' slug=i.slug %}">{{i.title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    {% include 'web/includes/subscription.html' %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

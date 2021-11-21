@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" >
+        <meta name="author" content="News Kerala Daily" >
+        <meta name="description" content="Read Today's Live News on Sports, Business, Entertainment, Blogs and Opinions around the world from News Kerala Daily." >
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="propeller" content="3f5162655d549650b0675c3a7154ec47">
+        {% block meta %}{% endblock meta %}
+        <title>{% block title %}News Kerala Daily{% endblock title %} - News Kerala Daily | Read Today's Live News on Sports, Business, Blogs and Opinions around the world from News Kerala Daily</title>
+        <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/newskerala.bundle.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+        <script src="{% static 'js/newskerala.bundle.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CR7LHH65E"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-8CR7LHH65E');
+        </script>
+        <script data-ad-client="ca-pub-9363118287470946" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    </head>
+
+    <body cz-shortcut-listen="true">
+        <div class="body-inner">
+            {% include 'web/includes/top-bar.html' %}
+            {% include 'web/includes/header.html' %}
+            {% include 'web/includes/main-nav.html' %}
+            {% include 'web/includes/breaking-news.html' %}
+
+                {% block content %}
+
+                {% endblock %}
+
+            {% include 'web/includes/footer.html' %}
+            {% include 'web/includes/copyright.html' %}
+
+        </div>
+        {% block javascript %}{% endblock %}
+
+    </body>
+</html>

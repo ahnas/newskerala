@@ -1,0 +1,24 @@
+{% load static %}
+<div id="top-bar" class="top-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="unstyled top-nav">
+                    <li><a href="{% url 'web:about' %}">About</a></li>
+                    <li><a href="{% url 'web:contact' %}">Contact</a></li>
+                    <li><a href="{% url 'web:advertisement' %}">Advertisement</a></li>
+                    <li><a href="{% url 'web:policy' %}">Privacy policy</a></li>
+                    <li><a href="{% url 'web:terms' %}">Terms & condition</a></li>
+                    <li><a href="{% url 'web:disclaimer' %}">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 top-social text-lg-right text-md-center">
+                <ul class="unstyled">
+                    {% for i in socials %}
+                    <li><a title="{{i.media}}" href="{{i.link}}" target="_blank"><span class="social-icon"><i class="fa fa-{{i.media}}"></i></span></a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+{% load static %}
+<!-- Header start -->
+<header id="header" class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-12">
+                <div class="logo">
+                    <a href="/" class="d-inline-block"> <img src="{% static 'images/logo.png' %}" alt="" /> </a>
+                </div>
+            </div>
+            {% for i in top_ads %}
+            {% if forloop.first %}
+            <div class="col-md-9 col-sm-12">
+                <div class="ad-banner text-center">
+                    <a href="{{i.link}}" target="_blank" class="w-100 d-inline-block"><img src="{{i.image.url}}" class="img-fluid w-100" alt="" style="width:100%;" /></a>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-md-12 col-sm-12 mt-3">
+                <div class="ad-banner text-center">
+                    <a href="{{i.link}}" target="_blank" class="w-100 d-inline-block"><img src="{{i.image.url}}" class="img-fluid w-100" alt="" style="width:100%;" /></a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</header>
+<!--/ Header end -->

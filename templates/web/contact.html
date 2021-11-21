@@ -1,0 +1,80 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block title %}Contact Us{% endblock title %}
+{% block content %}
+
+{% include 'web/includes/breadcrumb.html' %}
+
+<section class="utf_block_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 contact_area">
+                <h3>Leave a Message</h3>
+                <form action="" method="post" class="ajax reload reset">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Name</label>
+                                {{contact_form.name}}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                {{contact_form.email}}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Phone</label>
+                                {{contact_form.phone}}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Subject</label>
+                                {{contact_form.subject}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        {{contact_form.message}}
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary solid blank" type="submit">Send Message</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-4 col-md-12 contact_detail_area">
+                <div class="sidebar utf_sidebar_right">
+                    <div class="widget">
+                        <h3 class="utf_block_title"><span>Office Address</span></h3>
+                        <ul class="contct_detail_list">
+                            <li><i class="fa fa-home"></i>{{about.address}}</li>
+                            <li><i class="fa fa-phone"></i> <a href="javascript:void(0)">{{about.phone}}</a></li>
+                            <li><i class="fa fa-envelope-o"></i> <a href="mailto:{{about.email}}?subject=feedback">{{about.email}}</a></li>
+                            <li><i class="fa fa-info-circle"></i> <a href="javascript:void(0)">{{domain}}</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="widget">
+                        <h3 class="utf_block_title"><span>Follow Us</span></h3>
+                        <ul class="social-icon">
+                            {% for i in socials %}
+                            <li>
+                                <a href="{{i.link}}" target="_blank"><i class="fa fa-{{i.media}}"></i></a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

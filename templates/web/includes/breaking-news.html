@@ -1,0 +1,23 @@
+<div class="breaking-news-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="breaking-news">
+                    <div class="d-none d-md-block bg-danger text-white text-center py-2 px-3">
+                        <span>Breaking</span>
+                    </div>
+                    <div class="breaking-content">
+                        <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseleave="this.start();">
+                            {% for i in breaking_newses %}
+                            <a href="javascript:void(0)"><span class="position-relative mx-2 badge badge-primary">{{i.category.title}}</span> {{i.title}}</a>
+                            {% endfor %}
+                            {% for i in extra_breaking_newses %}
+                            <a href="{% url 'web:post' slug=i.slug %}"><span class="position-relative mx-2 badge badge-primary">{{i.category.title}}</span> {{i.title}}</a>
+                            {% endfor %}
+                        </marquee>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

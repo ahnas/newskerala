@@ -1,0 +1,38 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block title %}Whatsapp Group Links{% endblock title %}
+{% block content %}
+
+{% include 'web/includes/breadcrumb.html' %}
+
+<div class="utf_block_wrapper about-block-area">
+    <div class="container">
+        <h3>Join Whatsapp Group for Instant News Alert</h3>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="block category-listing">
+                    <h3 class="utf_block_title"><span>Whatsapp Group Links</span></h3>
+
+                    <div class="card-columns">
+                        {% for groups in whatsapp_groups %}
+                            {% for group in groups %}
+                            <div class="card">
+                                <div class="utf_post_block_style clearfix">
+                                    <div class="utf_post_content">
+                                        <h2 class="utf_post_title title-large">{{group.name}}</h2>
+                                        <a href="{{group.link}}" target="_blank">{{group.link}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

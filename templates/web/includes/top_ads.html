@@ -1,0 +1,10 @@
+{% load static %}
+<div class="utf_ad_content_area text-center utf_banner_area">
+    <div class="container">
+        <div class="row">
+            {% for i in top_ads %}
+            <div class="col-md-12"><a href="{{i.link}}" class="d-inline-block"><img class="img-fluid" src="{{i.image.url}}" alt="" /></a></div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

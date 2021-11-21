@@ -1,0 +1,70 @@
+{% load static %}
+{% load humanize %}
+<!--/ Featured Post Area Start -->
+<div class="gap-40"></div>
+<section class="utf_featured_post_area no-padding main-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 pad-r">
+                <div id="utf_featured_slider" class="owl-carousel owl-theme utf_featured_slider">
+                    {% for i in featured_news %}
+                    <div class="item" style="background-image: url({{i.featured_image.url}});">
+                        <div class="utf_featured_post">
+                            <div class="utf_post_content">
+                                <a class="utf_post_cat" href="{% url 'web:category' slug=i.category.slug %}">{{i.category.title}}</a>
+                                <h2 class="utf_post_title title-extra-large"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="{% url 'web:post' slug=i.slug %}">{{i.location}}</a></span>
+                                <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{i.display_time|naturaltime}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-md-12 pad-l">
+                <div class="row">
+                    {% for i in hot_posts %}
+
+                    {% if forloop.first %}
+                    <div class="col-md-12">
+                        <div class="utf_post_overaly_style contentTop hot-post-top clearfix">
+                            <div class="utf_post_thumb">
+                                {% if i.featured_image %}
+                                <a href="{% url 'web:post' slug=i.slug %}"><img class="img-fluid fx-1" src="{{i.featured_image.crop.471x269}}" alt="" /></a>
+                                {% endif %}
+                            </div>
+                            <div class="utf_post_content">
+                                <a class="utf_post_cat" href="{% url 'web:category' slug=i.category.slug %}">{{i.category}}</a>
+                                <h2 class="utf_post_title title-large"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="javascript:void(0)">{{i.location}}</a></span>
+                                <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{i.display_time}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="col-md-6 {% if forloop.counter == 2 %}pad-r-small{% else %}pad-l-small{% endif %}">
+                        <div class="utf_post_overaly_style contentTop utf_hot_post_bottom clearfix">
+                            <div class="utf_post_thumb">
+                                {% if i.featured_image %}
+                                <a href="{% url 'web:post' slug=i.slug %}"><img class="img-fluid fx-2" src="{{i.featured_image.crop.234x182}}" alt="" /></a>
+                                {% endif %}
+                            </div>
+                            <div class="utf_post_content">
+                                <a class="utf_post_cat" href="{% url 'web:category' slug=i.category.slug %}">{{i.category}}</a>
+                                <h2 class="utf_post_title title-medium"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                <div class="utf_post_meta">
+                                    <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="javascript:void(0)">{{i.location}}</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Featured Post Area End -->

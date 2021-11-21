@@ -1,0 +1,35 @@
+{% load static %}
+<!--/ Latest News Area Start -->
+<section class="utf_latest_new_area pb-bottom-20">
+    <div class="container">
+        <div class="utf_latest_news block color-red">
+            <h3 class="utf_block_title"><span>Latest News</span></h3>
+            <div id="utf_latest_news_slide" class="owl-carousel owl-theme utf_latest_news_slide">
+                {% for i in more_news %}
+                <div class="item">
+                    <ul class="utf_list_post">
+                        <li class="clearfix">
+                            <div class="utf_post_block_style clearfix">
+                                <div class="utf_post_thumb">
+                                    {% if i.featured_image %}
+                                    <a href="{% url 'web:post' slug=i.slug %}"><img class="img-fluid lazy" loading="lazy" src="{% static 'images/loading.webp' %}" data-src="{{i.featured_image.url}}" alt="" /></a>
+                                    {% endif %}
+                                </div>
+                                <a class="utf_post_cat" href="{% url 'web:category' slug=i.category.slug %}">{{i.category}}</a>
+                                <div class="utf_post_content">
+                                    <h2 class="utf_post_title title-medium"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                    <div class="utf_post_meta">
+                                        <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="javascript:void(0)">{{i.location}}</a></span>
+                                        <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{i.display_time}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Latest News Area End -->

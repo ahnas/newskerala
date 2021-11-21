@@ -1,0 +1,252 @@
+{% load static %}
+<!--/ 1rd Block Wrapper Start -->
+<section class="utf_block_wrapper p-bottom-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="utf_featured_tab color-blue">
+                    <h3 class="utf_block_title"><span>On Air</span></h3>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link animated fadeIn active" href="#tab_a" data-toggle="tab">
+                                <span class="tab-head"> <span class="tab-text-title">Technology</span> </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link animated fadeIn" href="#tab_b" data-toggle="tab">
+                                <span class="tab-head"> <span class="tab-text-title">Sports</span> </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active animated fadeInRight" id="tab_a">
+                            <div class="row">
+                                {% for i in tech_news %}
+                                {% if forloop.first %}
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="utf_post_block_style clearfix">
+
+                                        <div class="utf_post_thumb">
+                                            {% if i.featured_image %}
+                                            <a href="{% url 'web:post' slug=i.slug %}"> <img class="img-fluid lazy" loading="lazy" src="{% static 'images/loading.webp' %}" data-src="{{i.featured_image.crop.360x240}}" alt="" /> </a>
+                                            {% endif %}
+                                        </div>
+                                        <a class="utf_post_cat" href="{% url 'web:category' slug=i.category.slug %}">{{i.category.title}}</a>
+                                        <div class="utf_post_content">
+                                            <h2 class="utf_post_title"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                            <div class="utf_post_meta">
+                                                <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="javascript:void(0)">{{i.location}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{i.display_time}}</span>
+                                            </div>
+                                            <p>{{i.summary|slice:120}} ...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="utf_list_post_block">
+                                        <ul class="utf_list_post">
+                                            {% for i in tech_news %}
+                                            {% if not forloop.first %}
+                                            <li class="clearfix">
+                                                <div class="utf_post_block_style post-float clearfix">
+                                                    <div class="utf_post_thumb">
+                                                        {% if i.featured_image %}
+                                                        <a href="{% url 'web:post' slug=i.slug %}"> <img class="img-fluid lazy" loading="lazy" src="{% static 'images/loading.webp' %}" data-src="{{i.featured_image.crop.100x75}}" alt="" /> </a>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="utf_post_content">
+                                                        <h2 class="utf_post_title title-small"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                                        <div class="utf_post_meta">
+                                                            <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="javascript:void(0)">{{i.location}}</a></span>
+                                                            <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{i.display_time}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane animated fadeInLeft" id="tab_b">
+                            <div class="row">
+                                {% for i in sports_news %}
+                                {% if forloop.first %}
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="utf_post_block_style clearfix">
+                                        <div class="utf_post_thumb">
+                                            <a href="{% url 'web:post' slug=i.slug %}"> <img class="img-fluid lazy" loading="lazy" src="{% static 'images/loading.webp' %}" data-src="{{i.featured_image.crop.360x240}}" alt="" /> </a>
+                                        </div>
+                                        <a class="utf_post_cat" href="#">{{i.category.title}}</a>
+                                        <div class="utf_post_content">
+                                            <h2 class="utf_post_title"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                            <div class="utf_post_meta">
+                                                <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="javascript:void(0)">{{i.location}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{i.display_time}}</span>
+                                            </div>
+                                            <p>{{i.summary|slice:120}} ...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="utf_list_post_block">
+                                        <ul class="utf_list_post">
+                                            {% for i in sports_news %}
+                                            {% if not forloop.first %}
+                                            <li class="clearfix">
+                                                <div class="utf_post_block_style post-float clearfix">
+                                                    <div class="utf_post_thumb">
+                                                        {% if i.featured_image %}
+                                                        <a href="{% url 'web:post' slug=i.slug %}"> <img class="img-fluid lazy" loading="lazy" src="{% static 'images/loading.webp' %}" data-src="{{i.featured_image.crop.100x75}}" alt="" /> </a>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="utf_post_content">
+                                                        <h2 class="utf_post_title title-small"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                                        <div class="utf_post_meta">
+                                                            <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="javascript:void(0)">{{i.location}}</a></span>
+                                                            <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{i.display_time}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-40"></div>
+                <div class="block color-orange">
+                    <h3 class="utf_block_title"><span>Local News</span></h3>
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-6">
+                            {% for i in local_news %}
+                            {% if forloop.first %}
+                            <div class="utf_post_overaly_style clearfix">
+                                <div class="utf_post_thumb">
+                                    {% if i.featured_image %}
+                                    <a href="{% url 'web:post' slug=i.slug %}"> <img class="img-fluid lazy" loading="lazy" src="{% static 'images/loading.webp' %}" data-src="{{i.featured_image.crop.360x240}}" alt="" /> </a>
+                                    {% endif %}
+                                </div>
+                                <div class="utf_post_content">
+                                    <a class="utf_post_cat" href="{% url 'web:category' slug=i.category.slug %}">{{i.category.title}}</a>
+                                    <h2 class="utf_post_title"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                    <div class="utf_post_meta">
+                                        <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="javascript:void(0)">{{i.location}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{i.display_time}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+
+                            <div class="utf_list_post_block">
+                                <ul class="utf_list_post">
+                                    {% for i in local_news %}
+                                    {% if not forloop.first %}
+                                    <li class="clearfix">
+                                        <div class="utf_post_block_style post-float clearfix">
+                                            <div class="utf_post_thumb">
+                                                {% if i.featured_image %}
+                                                <a href="{% url 'web:post' slug=i.slug %}"> <img class="img-fluid lazy" loading="lazy" src="{% static 'images/loading.webp' %}" data-src="{{i.featured_image.crop.100x75}}" alt="" /> </a>
+                                                {% endif %}
+                                                <a class="utf_post_cat" href="{% url 'web:category' slug=i.category.slug %}">{{i.category.title}}</a>
+                                            </div>
+                                            <div class="utf_post_content">
+                                                <h2 class="utf_post_title title-small"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                                <div class="utf_post_meta">
+                                                    <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="javascript:void(0)">{{i.location}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{i.display_time}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            {% for i in gulf_news %}
+                            {% if forloop.first %}
+                            <div class="utf_post_overaly_style clearfix">
+                                <div class="utf_post_thumb">
+                                    {% if i.featured_image %}
+                                    <a href="{% url 'web:post' slug=i.slug %}"> <img class="img-fluid lazy" loading="lazy" src="{% static 'images/loading.webp' %}" data-src="{{i.featured_image.crop.360x240}}" alt="" /> </a>
+                                    {% endif %}
+                                </div>
+                                <div class="utf_post_content">
+                                    <a class="utf_post_cat" href="{% url 'web:category' slug=i.category.slug %}">{{i.category.title}}</a>
+                                    <h2 class="utf_post_title"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                    <div class="utf_post_meta">
+                                        <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="javascript:void(0)">{{i.location}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{i.display_time}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            <div class="utf_list_post_block">
+                                <ul class="utf_list_post">
+                                    {% for i in gulf_news %}
+                                    {% if not forloop.first %}
+                                    <li class="clearfix">
+                                        <div class="utf_post_block_style post-float clearfix">
+                                            <div class="utf_post_thumb">
+                                                {% if i.featured_image %}
+                                                <a href="{% url 'web:post' slug=i.slug %}"> <img class="img-fluid lazy" loading="lazy" src="{% static 'images/loading.webp' %}" data-src="{{i.featured_image.crop.100x75}}" alt="" /> </a>
+                                                {% endif %}
+                                                <a class="utf_post_cat" href="{% url 'web:category' slug=i.category.slug %}">{{i.category.title}}</a>
+                                            </div>
+                                            <div class="utf_post_content">
+                                                <h2 class="utf_post_title title-small"><a href="{% url 'web:post' slug=i.slug %}">{{i.title}}</a></h2>
+                                                <div class="utf_post_meta">
+                                                    <span class="utf_post_author"><i class="fa fa-map-marker"></i> <a href="javascript:void(0)">{{i.location}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{i.display_time}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <div class="sidebar utf_sidebar_right">
+                    <div class="widget">
+                        <h3 class="utf_block_title"><span>Follow Us</span></h3>
+                        <ul class="social-icon">
+                            {% for i in socials %}
+                            <li>
+                                <a href="{{i.link}}" target="_blank"><i class="fa fa-{{i.media}}"></i></a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    {% include 'web/includes/announcements.html' %}
+
+                    {% include 'web/includes/trending.html' %}
+
+                    {% include 'web/includes/post_ads.html' %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ 1rd Block Wrapper End -->

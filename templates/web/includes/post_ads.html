@@ -1,0 +1,6 @@
+{% load static %}
+{% for i in post_ads %}
+<div class="widget text-center">
+    <a href="{{i.link}}" class="d-inline-block"><img class="banner img-fluid" src="{{i.image.url}}" alt="" /></a>
+</div>
+{% endfor %}
